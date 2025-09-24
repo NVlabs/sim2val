@@ -40,3 +40,16 @@ uv run --all-extras pytest
 # Using pip
 pytest
 ```
+
+## Citation
+
+If you use this code, please cite the following paper:
+
+```
+@inproceedings{luo2025_sim2val,
+title = {Sim2Val: Leveraging Correlation Across Test Platforms for Variance-Reduced Metric Estimation},
+author = {Rachel Luo and Heng Yang and Michael Watson and Apoorva Sharma and Sushant Veer and Edward Schmerling and Marco Pavone},
+booktitle = {Proceedings of the Conference on Robot Learning (CoRL)},
+year = {2025},
+}
+```

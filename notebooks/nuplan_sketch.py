@@ -1,7 +1,13 @@
+# Copyright (c) 2025, NVIDIA Corporation. All rights reserved.
+#
+# This work is made available under the Nvidia Source Code License-NC.
+# To view a copy of this license, check out LICENSE.txt
+
+# ruff: noqa
+
 """The following provides a sketch of the code used for using control variates
 to compute metrics from the nuPlan dataset. This is *not* runnable code.
 """
-# ruff: noqa
 
 # Datasets are created that form the training, validation, and test sets.
 # A MLP is trained using the training/val datasets, with the best model
