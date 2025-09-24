@@ -1,0 +1,102 @@
+[project]
+name = "sim2val"
+version = "0.1.6"
+authors = [
+{name = "Rachel Luo", email = "raluo@nvidia.com"},
+{name = "Michael Watson", email = "mwatson@nvidia.com"},
+]
+description = "Utilities for sim2val"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python",
+]
+dependencies = [
+    "numpy",
+    "scipy",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.urls]
+Homepage = "https://gitlab-master.nvidia.com/nvr-av/sim2val"
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "pytest",
+]
+nb = [
+    "jupyter",
+    "ipykernel",
+]
+
+[tool.uv]
+index-strategy = "unsafe-best-match"
+
+[tool.hatch.build]
+packages = ["src/sim2val"]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "src/sim2val",
+    "README.md",
+]
+
+[tool.ruff]
+line-length = 100
+respect-gitignore = false
+
+[tool.ruff.lint]
+select = [
+    "D",  # Docstring rules.
+    "E",  # pycodestyle errors.
+    "F",  # Pyflakes rules.
+    "I",  # isort formatting.
+    "PLC",  # Pylint convention warnings.
+    "PLE",  # Pylint errors.
+    "PLR",  # Pylint refactor recommendations.
+    "PLW",  # Pylint warnings.
+]
+
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["cool_project"]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.pytest.ini_options]
+markers = [
+    "gpu: marks tests that require one GPU",
+    "integration: marks integration tests that require external resources",
+    "multi_gpu: marks tests that require at least two GPUs",
+    "lustre: marks tests that require lustre access",
+]
+norecursedirs = [
+    "build",
+    "experimental",
+    "notebook/experimental",
+    "third_party",
+]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "*/test_*.py",
+    "*/tests/*",
+    "*/__init__.py"
+]
+relative_files = true
+source = [
+    "src",
+]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
