@@ -9,6 +9,8 @@
 to compute metrics from the nuPlan dataset. This is *not* runnable code.
 """
 
+from sim2val.control_variates import control_variates_estimator
+
 # Datasets are created that form the training, validation, and test sets.
 # A MLP is trained using the training/val datasets, with the best model
 # being saved for later use.
