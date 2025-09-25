@@ -8,9 +8,9 @@
 import numpy as np
 import pytest
 from sim2val.control_variates import (
-    chebyshev_confidence_interval,
+    confidence_interval_chebyshev,
+    confidence_interval_clt,
     control_variates_estimator,
-    normal_confidence_interval,
 )
 
 
@@ -94,53 +94,53 @@ def test_control_variates_estimator_vector():
     assert np.allclose(result.beta, EXPECTED_BETA_OPT, atol=5e-2)
 
 
-def test_chebyshev_confidence_interval():
+def test_confidence_interval_chebyshev():
     """Test Chebyshev confidence interval with nominal values."""
     MEAN = 0.5
     VAR = 1.0
     CONFIDENCE_LEVEL = 0.95
     EXPECTED_RADIUS = 4.4721
 
-    ci = chebyshev_confidence_interval(MEAN, VAR, CONFIDENCE_LEVEL)
+    ci = confidence_interval_chebyshev(MEAN, VAR, CONFIDENCE_LEVEL)
     assert len(ci) == 2  # noqa: PLR2004
     assert np.isclose(ci[0], MEAN - EXPECTED_RADIUS, atol=1e-4)
     assert np.isclose(ci[1], MEAN + EXPECTED_RADIUS, atol=1e-4)
 
 
-def test_chebyshev_confidence_interval_invalid():
+def test_confidence_interval_chebyshev_invalid():
     """Test invalid inputs for Chebyshev confidence interval."""
     # Invalid confidence level
     with pytest.raises(ValueError):
-        chebyshev_confidence_interval(0, 1, 1.5)
+        confidence_interval_chebyshev(0, 1, 1.5)
     with pytest.raises(ValueError):
-        chebyshev_confidence_interval(0, 1, -0.1)
+        confidence_interval_chebyshev(0, 1, -0.1)
 
     # Zero variance
     with pytest.raises(ValueError):
-        chebyshev_confidence_interval(0, 0, 0.95)
+        confidence_interval_chebyshev(0, 0, 0.95)
 
 
-def test_normal_confidence_interval():
+def test_confidence_interval_clt():
     """Test normal confidence interval with nominal values."""
     MEAN = 0.5
     VAR = 1.0
     CONFIDENCE_LEVEL = 0.95
     EXPECTED_RADIUS = 1.96
 
-    ci = normal_confidence_interval(MEAN, VAR, CONFIDENCE_LEVEL)
+    ci = confidence_interval_clt(MEAN, VAR, CONFIDENCE_LEVEL)
     assert len(ci) == 2  # noqa: PLR2004
     assert np.isclose(ci[0], MEAN - EXPECTED_RADIUS, atol=1e-4)
     assert np.isclose(ci[1], MEAN + EXPECTED_RADIUS, atol=1e-4)
 
 
-def test_normal_confidence_interval_invalid():
+def test_confidence_interval_clt_invalid():
     """Test invalid inputs for normal confidence interval."""
     # Invalid confidence level
     with pytest.raises(ValueError):
-        normal_confidence_interval(0, 1, 1.5)
+        confidence_interval_clt(0, 1, 1.5)
     with pytest.raises(ValueError):
-        normal_confidence_interval(0, 1, -0.1)
+        confidence_interval_clt(0, 1, -0.1)
 
     # Zero variance
     with pytest.raises(ValueError):
-        normal_confidence_interval(0, 0, 0.95)
+        confidence_interval_clt(0, 0, 0.95)

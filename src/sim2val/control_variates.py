@@ -91,10 +91,10 @@ def control_variates_estimator(
     )
 
 
-def chebyshev_confidence_interval(
+def confidence_interval_chebyshev(
     mean: float, variance: float, confidence_level: float
 ) -> tuple[float, float]:
-    """Returns the Chebyshev confidence interval around the mean.
+    """Returns the confidence interval around the mean computed with Chebyshev.
 
     Args:
         mean (float): The mean of the distribution.
@@ -114,10 +114,10 @@ def chebyshev_confidence_interval(
     return mean - radius, mean + radius
 
 
-def normal_confidence_interval(
+def confidence_interval_clt(
     mean: float, variance: float, confidence_level: float
 ) -> tuple[float, float]:
-    """Returns the confidence interval around the mean assuming a normal distribution.
+    """Returns the confidence interval around the mean computed with CLT.
 
     Args:
         mean (float): The mean of the distribution.

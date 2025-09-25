@@ -9,6 +9,8 @@
 to compute metrics from the nuPlan dataset. This is *not* runnable code.
 """
 
+from sim2val.control_variates import control_variates_estimator
+
 # Datasets are created that form the training, validation, and test sets.
 # A MLP is trained using the training/val datasets, with the best model
 # being saved for later use.
@@ -30,7 +32,7 @@ with torch.no_grad():
         model(unpaired_embeddings, unpaired_open_metrics).cpu().numpy().squeeze()
     )
 
-cv_result = compute_cv_result(
+cv_result = control_variates_estimator(
     paired_closed_metrics,
     paired_closed_predictions,
     unpaired_closed_predictions,

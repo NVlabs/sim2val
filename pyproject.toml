@@ -32,6 +32,9 @@ dev = [
 nb = [
     "jupyter",
     "ipykernel",
+    "pandas",
+    "torch",
+    "pyarrow",
 ]
 
 [tool.uv]
