@@ -27,6 +27,10 @@ To get started with `sim2val`, you can run the example notebooks--for example:
 
 ```bash
 jupyter notebook notebooks/simple_run.ipynb
+
+# or
+
+uv run python -m jupyter notebook notebooks/simple_run.ipynb
 ```
 
 ## Testing
