@@ -4,6 +4,12 @@
 # To view a copy of this license, check out LICENSE.txt
 
 # ruff: noqa
+
+"""
+This script can be run with:
+    uv run --extra=nb notebooks/quadruped.py
+"""
+
 import os
 import sys
 
@@ -19,9 +25,9 @@ torch.manual_seed(2)
 torch.cuda.manual_seed(2)
 
 # ----- Step 1: Load and split data -----
-real = pd.read_parquet("../testdata/quadruped/real.parquet")
-sim = pd.read_parquet("../testdata/quadruped/paired_sim.parquet")
-only_sim = pd.read_parquet("../testdata/quadruped/only_sim.parquet")
+real = pd.read_parquet("testdata/quadruped/real.parquet")
+sim = pd.read_parquet("testdata/quadruped/paired_sim.parquet")
+only_sim = pd.read_parquet("testdata/quadruped/only_sim.parquet")
 
 # Construct X: [command_velocity (3,) + sim["avg_track_error"] (1,)]
 cmd_vel = np.array([np.array(x).flatten() for x in real["command_velocity"]])  # shape (N, 3)
