@@ -30,7 +30,7 @@ with torch.no_grad():
         model(unpaired_embeddings, unpaired_open_metrics).cpu().numpy().squeeze()
     )
 
-cv_result = compute_cv_result(
+cv_result = control_variates_estimator(
     paired_closed_metrics,
     paired_closed_predictions,
     unpaired_closed_predictions,
