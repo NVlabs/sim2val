@@ -8,11 +8,27 @@ Learning-based robotic systems demand rigorous validation to assure reliable per
 
 
 ## Motivation
-* Traditional validation requires extensive real-world testing to achieve the confidence levels needed for safety assurances and certification
-* Simulation-only validation would be much cheaper, but simulators are not yet accurate enough for standalone validation, and would shift the problem to that of validating a simulator
-* Goal: Combine real-world and simulation testing to reduce real-world data requirements for validation
+<table>
+  <tr>
+    <td>
+      <img width="384" height="252" alt="platforms" src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" />
+    </td>
+    <td>
+      Sim2Val estimator of mean:<br>
+      <ul>
+        <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ²)</li>
+      </ul>
+      If the original paired observations have low correlation:<br>
+      <ul>
+        <li>Traditional validation requires extensive real-world testing to achieve the confidence levels needed for safety assurances and certification</li>
+        <li>Simulation-only validation would be much cheaper, but simulators are not yet accurate enough for standalone validation, and would shift the problem to that of validating a simulator</li>
+        <li>Goal: Combine real-world and simulation testing to reduce real-world data requirements for validation</li>
+      </ul>
+    </td>
 
- <img width="128" height="84" alt="platforms" src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" />
+  </tr>
+</table>
+
 
 ## Method
 **Idea:** Use simulation as a control variate!
@@ -24,12 +40,43 @@ Learning-based robotic systems demand rigorous validation to assure reliable per
 
 <img width="842" height="264" alt="real_to_sim_mapping" src="https://github.com/user-attachments/assets/8cc2c4d3-31fe-430c-aaf0-0b3d6ef64217" />
 
+<table>
+  <tr>
+    <td>
+      Sim2Val estimator of mean:<br>
+      <ul>
+        <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ²)</li>
+      </ul>
+      If the original paired observations have low correlation:<br>
+      <ul>
+        <li>We can learn a nonlinear metric correlator function (MCF) mapping scenario features + sim measurements → a refined surrogate metric</li>
+        <li>We can then use the new surrogate as a control variate</li>
+      </ul>
+    </td>
+    <td>
+      <img width="457" height="426" alt="equations_and_corr" src="https://github.com/user-attachments/assets/a40f2b7c-5d1b-4a8f-999c-ae5fda1a0243" />
+    </td>
+  </tr>
+</table>
+
 
 
 ### Examples of Paired Scenarios
-![verf_real_sim_highway](https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b)
-<img src="https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b" width="300">
+<img src="https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b" width="400">
+<img src="https://github.com/user-attachments/assets/20ee58be-7026-42d3-a38f-18a88849d017" width="400">
 
+## Results
+
+### Sim2Val Autonomous Driving Performance
+<img width="1280" height="220" alt="image" src="https://github.com/user-attachments/assets/0d23df4a-b69f-4a2f-9bc7-6c87865f723f" />
+
+By leveraging inexpensive sim samples, we can achieve equivalent confidence level as using ~6x the number of expensive real-world samples! (Variance reduction of 82.9%)
+
+### Sim2Val Quadruped Velocity Tracking
+
+<img width="1280" height="163" alt="image" src="https://github.com/user-attachments/assets/12ef0ac4-3456-4560-a503-ce5e73ef11e4" />
+
+Note that even the relatively modest reduction in variance from 2.048E−5 to 1.926E−5 would have required 38% more real-world tests without sim! 
 
 ## Getting started
 
