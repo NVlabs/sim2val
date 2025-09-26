@@ -12,7 +12,7 @@ Learning-based robotic systems demand rigorous validation to assure reliable per
 * Simulation-only validation would be much cheaper, but simulators are not yet accurate enough for standalone validation, and would shift the problem to that of validating a simulator
 * Goal: Combine real-world and simulation testing to reduce real-world data requirements for validation
 
- <img width="1280" height="840" alt="platforms" src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" />
+ <img width="128" height="84" alt="platforms" src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" />
 
 ## Method
 **Idea:** Use simulation as a control variate!
@@ -22,12 +22,13 @@ Learning-based robotic systems demand rigorous validation to assure reliable per
 * Because the true simulation mean is unknown, we estimate it from the sim-only data
 <img width="276" height="266" alt="paired_thumbnail" src="https://github.com/user-attachments/assets/3fc8b2f0-9142-4719-8d36-67be16f60d18" />
 
-<img width="1053" height="330" alt="real_to_sim_mapping" src="https://github.com/user-attachments/assets/8cc2c4d3-31fe-430c-aaf0-0b3d6ef64217" />
+<img width="842" height="264" alt="real_to_sim_mapping" src="https://github.com/user-attachments/assets/8cc2c4d3-31fe-430c-aaf0-0b3d6ef64217" />
 
 
 
 ### Examples of Paired Scenarios
 ![verf_real_sim_highway](https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b)
+<img src="https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b" width="300">
 
 
 ## Getting started
