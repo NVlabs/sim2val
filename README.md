@@ -1,7 +1,7 @@
 # Sim2Val
 
 This project provides `sim2val`--a Python package with utilities for validation using simulated data. For
-more information, please see the [paper](https://arxiv.org/abs/2506.20553).
+more information, please see the [paper](https://www.arxiv.org/pdf/2506.20553).
 
 ## Abstract
 Learning-based robotic systems demand rigorous validation to assure reliable performance, but extensive real-world testing is often prohibitively expensive, and if conducted may still yield insufficient data for high-confidence guarantees. In this work we introduce Sim2Val, a general estimation framework that leverages paired data across test platforms, e.g., paired simulation and real-world observations, to achieve better estimates of real-world metrics via the method of control variates. By incorporating cheap and abundant auxiliary measurements (for example, simulator outputs) as control variates for costly real-world samples, our method provably reduces the variance of Monte Carlo estimates and thus requires significantly fewer real-world samples to attain a specified confidence bound on the mean performance. We provide theoretical analysis characterizing the variance and sample-efficiency improvement, and demonstrate empirically in autonomous driving and quadruped robotics settings that our approach achieves high-probability bounds with markedly improved sample efficiency. Our technique can lower the real-world testing burden for validating the performance of the stack, thereby enabling more efficient and cost-effective experimental evaluation of robotic systems.
@@ -31,12 +31,23 @@ Learning-based robotic systems demand rigorous validation to assure reliable per
 
 
 ## Method
-**Idea:** Use simulation as a control variate!
 
-* With a control variate – a correlated signal whose expectation is known – we can reduce the variance of our estimator
-* Simulation measurements are correlated with real-world measurements
-* Because the true simulation mean is unknown, we estimate it from the sim-only data
-<img width="276" height="266" alt="paired_thumbnail" src="https://github.com/user-attachments/assets/3fc8b2f0-9142-4719-8d36-67be16f60d18" />
+<table>
+  <tr>
+    <td>
+      **Idea:** Use simulation as a control variate!<br>
+      <ul>
+        <li> With a control variate – a correlated signal whose expectation is known – we can reduce the variance of our estimator </li>
+        <li> Simulation measurements are correlated with real-world measurements </li>
+        <li> Because the true simulation mean is unknown, we estimate it from the sim-only data </li>
+      </ul>
+    </td>
+    <td>
+        <img width="276" height="266" alt="paired_thumbnail" src="https://github.com/user-attachments/assets/3fc8b2f0-9142-4719-8d36-67be16f60d18" />
+    </td>
+  </tr>
+</table>
+
 
 <img width="842" height="264" alt="real_to_sim_mapping" src="https://github.com/user-attachments/assets/8cc2c4d3-31fe-430c-aaf0-0b3d6ef64217" />
 
