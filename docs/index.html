@@ -204,19 +204,36 @@
         <hr>
 
         <div class="columns is-vcentered">
-            <div class="column is-halfcontent">
+            <div class="column content">
               <p>Sim2Val estimates the true metrics mean by combining the paired real-world and simulation measurements.</p>
-              <p>
-                Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ<sup>2</sup>) between real-world and simulation measurements.
-              </p>
+              <ul>
+                <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ<sup>2</sup>) between real-world and simulation measurements.</li>
+              </ul>
             </div>
-            <div class="column is-half">
+            <div class="column is-5">
               <figure class="image">
-                <img src="https://github.com/user-attachments/assets/a40f2b7c-5d1b-4a8f-999c-ae5fda1a0243" alt="equations_and_corr" />
+                <img src="figures/equation.png" alt="Sim2Val Estimator" />
               </figure>
             </div>
         </div>
+        <hr>
 
+        <div class="columns is-vcentered">
+          <div class="column content">
+            <p>If the original paired observations have low correlation:
+            <ul>
+              <li>We can learn a nonlinear metric correlator function (MCF) mapping scenario features + sim measurements → a refined surrogate metric</li>
+              <li>We can then use the new surrogate as a control variate:</li>
+            </ul>
+            </p>
+          </div>
+          <div class="column is-5">
+            <figure class="image">
+              <img src="figures/mcf.png" alt="MCF example" />
+            </figure>
+          </div>
+      </div>
+      <hr>
 </section>
 
 <section id="results" class="section">
