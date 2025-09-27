@@ -4,34 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sim2Val</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Reset some defaults */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       line-height: 1.6;
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-      background-color: #fdfdfd;
       color: #333;
+      background-color: #fdfdfd;
     }
 
-    h1, h2, h3 {
-      color: #1a1a1a;
+    /* Header / Hero Section */
+    header {
+      background-color: #1f4e79;
+      color: white;
+      text-align: center;
+      padding: 80px 20px 60px 20px;
     }
 
-    a {
-      color: #1a73e8;
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    header p.authors {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    header p.affiliation {
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    header p.conference {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      background-color: #2a78b8;
+      color: white;
+      padding: 12px 30px;
       text-decoration: none;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background-color 0.3s;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .cta-buttons a:hover {
+      background-color: #1a5a87;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
+    /* Content */
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2, h3 {
+      color: #1f4e79;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    p {
       margin-bottom: 20px;
     }
 
@@ -49,8 +105,8 @@
     }
 
     ul {
-      margin-top: 0;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      padding-left: 20px;
     }
 
     .examples {
@@ -63,6 +119,17 @@
     .examples img {
       flex: 1;
       min-width: 300px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
 
     hr {
@@ -73,80 +140,99 @@
   </style>
 </head>
 <body>
-  <h1>Sim2Val</h1>
-  <p>This project provides <code>sim2val</code>—a Python package with utilities for validation using simulated data. For more information, please see the <a href="https://www.arxiv.org/pdf/2506.20553">paper</a> or the <a href="corl_2025_poster.pdf">poster</a>.</p>
-
-  <h2>Abstract</h2>
-  <p>Learning-based robotic systems demand rigorous validation to assure reliable performance, but extensive real-world testing is often prohibitively expensive, and if conducted may still yield insufficient data for high-confidence guarantees. In this work we introduce Sim2Val, a general estimation framework that leverages paired data across test platforms, e.g., paired simulation and real-world observations, to achieve better estimates of real-world metrics via the method of control variates. By incorporating cheap and abundant auxiliary measurements (for example, simulator outputs) as control variates for costly real-world samples, our method provably reduces the variance of Monte Carlo estimates and thus requires significantly fewer real-world samples to attain a specified confidence bound on the mean performance. We provide theoretical analysis characterizing the variance and sample-efficiency improvement, and demonstrate empirically in autonomous driving and quadruped robotics settings that our approach achieves high-probability bounds with markedly improved sample efficiency. Our technique can lower the real-world testing burden for validating the performance of the stack, thereby enabling more efficient and cost-effective experimental evaluation of robotic systems.</p>
-
-  <h2>Motivation</h2>
-  <div class="side-by-side">
-    <div>
-      <img src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" alt="platforms" />
+  <!-- Header / Hero -->
+  <header>
+    <h1>Sim2Val: Leveraging Correlation Across Test Platforms for Variance-Reduced Metric Estimation</h1>
+    <p class="authors">
+      Rachel Luo¹, Heng Yang¹², Michael Watson¹, Apoorva Sharma¹, Sushant Veer¹, Edward Schmerling¹, Marco Pavone¹³
+    </p>
+    <p class="affiliation">
+      ¹ NVIDIA Research, ² Harvard University, ³ Stanford University
+    </p>
+    <p class="conference">
+      Conference on Robot Learning (CoRL) 2025
+    </p>
+    <div class="cta-buttons">
+      <a href="#">Code</a>
+      <a href="https://www.arxiv.org/pdf/2506.20553">Paper</a>
+      <a href="corl_2025_poster.pdf">Poster</a>
     </div>
-    <div>
-      <p>Sim2Val estimator of mean:</p>
-      <ul>
-        <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ²)</li>
-      </ul>
-      <p>If the original paired observations have low correlation:</p>
-      <ul>
-        <li>Traditional validation requires extensive real-world testing to achieve the confidence levels needed for safety assurances and certification</li>
-        <li>Simulation-only validation would be much cheaper, but simulators are not yet accurate enough for standalone validation, and would shift the problem to that of validating a simulator</li>
-        <li>Goal: Combine real-world and simulation testing to reduce real-world data requirements for validation</li>
-      </ul>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h2>Abstract</h2>
+    <p>Learning-based robotic systems demand rigorous validation to assure reliable performance, but extensive real-world testing is often prohibitively expensive, and if conducted may still yield insufficient data for high-confidence guarantees. In this work we introduce Sim2Val, a general estimation framework that leverages paired data across test platforms, e.g., paired simulation and real-world observations, to achieve better estimates of real-world metrics via the method of control variates. By incorporating cheap and abundant auxiliary measurements (for example, simulator outputs) as control variates for costly real-world samples, our method provably reduces the variance of Monte Carlo estimates and thus requires significantly fewer real-world samples to attain a specified confidence bound on the mean performance. We provide theoretical analysis characterizing the variance and sample-efficiency improvement, and demonstrate empirically in autonomous driving and quadruped robotics settings that our approach achieves high-probability bounds with markedly improved sample efficiency. Our technique can lower the real-world testing burden for validating the performance of the stack, thereby enabling more efficient and cost-effective experimental evaluation of robotic systems.</p>
+
+    <h2>Motivation</h2>
+    <div class="side-by-side">
+      <div>
+        <img src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" alt="platforms" />
+      </div>
+      <div>
+        <p>Sim2Val estimator of mean:</p>
+        <ul>
+          <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ²)</li>
+        </ul>
+        <p>If the original paired observations have low correlation:</p>
+        <ul>
+          <li>Traditional validation requires extensive real-world testing to achieve the confidence levels needed for safety assurances and certification</li>
+          <li>Simulation-only validation would be much cheaper, but simulators are not yet accurate enough for standalone validation, and would shift the problem to that of validating a simulator</li>
+          <li>Goal: Combine real-world and simulation testing to reduce real-world data requirements for validation</li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <h2>Method</h2>
-  <div class="side-by-side">
-    <div>
-      <p><strong>Idea:</strong> Use simulation as a control variate!</p>
-      <ul>
-        <li>With a control variate – a correlated signal whose expectation is known – we can reduce the variance of our estimator</li>
-        <li>Simulation measurements are correlated with real-world measurements</li>
-        <li>Because the true simulation mean is unknown, we estimate it from the sim-only data</li>
-      </ul>
+    <h2>Method</h2>
+    <div class="side-by-side">
+      <div>
+        <p><strong>Idea:</strong> Use simulation as a control variate!</p>
+        <ul>
+          <li>With a control variate – a correlated signal whose expectation is known – we can reduce the variance of our estimator</li>
+          <li>Simulation measurements are correlated with real-world measurements</li>
+          <li>Because the true simulation mean is unknown, we estimate it from the sim-only data</li>
+        </ul>
+      </div>
+      <div>
+        <img src="https://github.com/user-attachments/assets/3fc8b2f0-9142-4719-8d36-67be16f60d18" alt="paired_thumbnail" />
+      </div>
     </div>
-    <div>
-      <img src="https://github.com/user-attachments/assets/3fc8b2f0-9142-4719-8d36-67be16f60d18" alt="paired_thumbnail" />
+
+    <img src="https://github.com/user-attachments/assets/8cc2c4d3-31fe-430c-aaf0-0b3d6ef64217" alt="real_to_sim_mapping" />
+
+    <div class="side-by-side">
+      <div>
+        <p>Sim2Val estimator of mean:</p>
+        <ul>
+          <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ²)</li>
+        </ul>
+        <p>If the original paired observations have low correlation:</p>
+        <ul>
+          <li>We can learn a nonlinear metric correlator function (MCF) mapping scenario features + sim measurements → a refined surrogate metric</li>
+          <li>We can then use the new surrogate as a control variate</li>
+        </ul>
+      </div>
+      <div>
+        <img src="https://github.com/user-attachments/assets/a40f2b7c-5d1b-4a8f-999c-ae5fda1a0243" alt="equations_and_corr" />
+      </div>
     </div>
-  </div>
 
-  <img src="https://github.com/user-attachments/assets/8cc2c4d3-31fe-430c-aaf0-0b3d6ef64217" alt="real_to_sim_mapping" />
-
-  <div class="side-by-side">
-    <div>
-      <p>Sim2Val estimator of mean:</p>
-      <ul>
-        <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ²)</li>
-      </ul>
-      <p>If the original paired observations have low correlation:</p>
-      <ul>
-        <li>We can learn a nonlinear metric correlator function (MCF) mapping scenario features + sim measurements → a refined surrogate metric</li>
-        <li>We can then use the new surrogate as a control variate</li>
-      </ul>
+    <h3>Examples of Paired Scenarios</h3>
+    <div class="examples">
+      <img src="https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b" alt="example1" />
+      <img src="https://github.com/user-attachments/assets/20ee58be-7026-42d3-a38f-18a88849d017" alt="example2" />
     </div>
-    <div>
-      <img src="https://github.com/user-attachments/assets/a40f2b7c-5d1b-4a8f-999c-ae5fda1a0243" alt="equations_and_corr" />
-    </div>
-  </div>
 
-  <h3>Examples of Paired Scenarios</h3>
-  <div class="examples">
-    <img src="https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b" alt="example1" />
-    <img src="https://github.com/user-attachments/assets/20ee58be-7026-42d3-a38f-18a88849d017" alt="example2" />
-  </div>
+    <h2>Results</h2>
+    <h3>Sim2Val Autonomous Driving Performance</h3>
+    <img src="https://github.com/user-attachments/assets/0d23df4a-b69f-4a2f-9bc7-6c87865f723f" alt="autonomous_driving" />
+    <p>By leveraging inexpensive sim samples, we can achieve equivalent confidence level as using ~6x the number of expensive real-world samples! (Variance reduction of 82.9%)</p>
 
-  <h2>Results</h2>
-  <h3>Sim2Val Autonomous Driving Performance</h3>
-  <img src="https://github.com/user-attachments/assets/0d23df4a-b69f-4a2f-9bc7-6c87865f723f" alt="autonomous_driving" />
-  <p>By leveraging inexpensive sim samples, we can achieve equivalent confidence level as using ~6x the number of expensive real-world samples! (Variance reduction of 82.9%)</p>
+    <h3>Sim2Val Quadruped Velocity Tracking</h3>
+    <img src="https://github.com/user-attachments/assets/12ef0ac4-3456-4560-a503-ce5e73ef11e4" alt="quadruped_velocity" />
+    <p>Note that even the relatively modest reduction in variance from 2.048E−5 to 1.926E−5 would have required 38% more real-world tests without sim!</p>
 
-  <h3>Sim2Val Quadruped Velocity Tracking</h3>
-  <img src="https://github.com/user-attachments/assets/12ef0ac4-3456-4560-a503-ce5e73ef11e4" alt="quadruped_velocity" />
-  <p>Note that even the relatively modest reduction in variance from 2.048E−5 to 1.926E−5 would have required 38% more real-world tests without sim!</p>
-
+  </main>
 </body>
 </html>
 
