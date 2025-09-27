@@ -11,7 +11,7 @@ Learning-based robotic systems demand rigorous validation to assure reliable per
 <table>
   <tr>
     <td>
-      <img width="384" height="252" alt="platforms" src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" />
+      <img width="768" height="504" alt="platforms" src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" />
     </td>
     <td>
       Sim2Val estimator of mean:<br>
@@ -65,7 +65,7 @@ Learning-based robotic systems demand rigorous validation to assure reliable per
       </ul>
     </td>
     <td>
-      <img width="457" height="426" alt="equations_and_corr" src="https://github.com/user-attachments/assets/a40f2b7c-5d1b-4a8f-999c-ae5fda1a0243" />
+      <img width="548" height="511" alt="equations_and_corr" src="https://github.com/user-attachments/assets/a40f2b7c-5d1b-4a8f-999c-ae5fda1a0243" />
     </td>
   </tr>
 </table>
