@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Sim2Val">
+  <meta property="og:title" content="Sim2Val"/>
+  <meta property="og:description" content="Leveraging Correlation Across Test Platforms for Variance-Reduced Metric Estimation."/>
+  <meta property="og:url" content="https://github.com/NVLabs/sim2val"/>
+  
+
+  <meta name="twitter:title" content="Sim2Val">
+  <meta name="twitter:description" content="Leveraging Correlation Across Test Platforms for Variance-Reduced Metric Estimation.">
+  <!-- Keywords for your paper to be indexed by-->
+  <!-- <meta name="keywords" content=""> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Sim2Val: Leveraging Correlation Across Test Platforms for Variance-Reduced Metric Estimation.</title>
+  <!-- <link rel="icon" type="image/x-icon" href="static/images/logo.ico"> -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+
+</head>
+<body>
+
+    <!-- =====================================================
+     Data‑Mixture Strategy Cards  –  drop‑in component
+===================================================== -->
+
+
+
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            
+        <h1 class="title is-1 publication-title">
+            <span class="rainbow_text_animated">Sim2Val</span>
+        </h1>
+        <h2 class="subtitle is-2 publication-subtitle">
+            Leveraging Correlation Across Test Platforms for Variance-Reduced Metric Estimation.
+            </h2>
+            <div class="is-size-5 publication-authors">
+                <!-- Paper authors -->
+                <span class="author-block">
+                  Rachel Luo<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Heng Yang<sup>1,2</sup>,
+                </span>
+                <span class="author-block">
+                  Michael Watson<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Apoorva Sharma<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Sushant Veer<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Edward Schmerling<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Marco Pavone<sup>1,3</sup>
+                </span>
+              </div>
+              
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <sup>1</sup>NVIDIA Research&nbsp;&bull;&nbsp;
+                  <sup>2</sup>Harvard University&nbsp;&bull;&nbsp;
+                  <sup>3</sup>Stanford University&nbsp;&bull;&nbsp;
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-venue">Conference on Robot Learning (CoRL) 2025</div>
+                
+              
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://www.arxiv.org/pdf/2506.20553" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Arxiv</span>
+                      </a>
+                    </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/NVLabs/sim2val" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Learning-based robotic systems demand rigorous validation to assure reliable performance, but extensive real-world testing is often prohibitively expensive, and if conducted may still yield insufficient data for high-confidence guarantees. In this work we introduce Sim2Val, a general estimation framework that leverages paired data across test platforms, e.g., paired simulation and real-world observations, to achieve better estimates of real-world metrics via the method of control variates.	 By incorporating cheap and abundant auxiliary measurements (for example, simulator outputs) as control variates for costly real-world samples, our method provably reduces the variance of Monte Carlo estimates and thus requires significantly fewer real-world samples to attain a specified confidence bound on the mean performance. We provide theoretical analysis characterizing the variance and sample-efficiency improvement, and demonstrate empirically in autonomous driving and quadruped robotics settings that our approach achieves high-probability bounds with markedly improved sample efficiency. Our technique can lower the real-world testing burden for validating the performance of the stack, thereby enabling more efficient and cost-effective experimental evaluation of robotic systems.
+
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- ==========================================================
+     Motivation  
+========================================================== -->
+<section id="motivation" class="section">
+    <div class="container is-max-desktop">
+  
+      <h2 class="title is-3 has-text-centered">Motivation</h2>
+  
+      <!-- -------------------------------------------------- -->
+      <!-- 1.   Motivation  (Fig 3)    -->
+      <!-- -------------------------------------------------- -->
+      <div class="columns is-vcentered">
+        <div class="column is-half">
+          <figure class="image">
+            <img src="https://github.com/user-attachments/assets/abdae8a4-dc65-4b09-b2e5-4c50597b41e3" alt="Sim2Val Motivation">
+          </figure>
+        </div>
+        <div class="column content">
+          <ul>
+            <li>Traditional validation requires extensive real-world testing to achieve the confidence levels needed for safety assurances and certification</li>
+            <li>Simulation-only validation would be much cheaper, but simulators are not yet accurate enough for standalone validation, and would shift the problem to that of validating a simulator</li>
+            <li>Goal: Combine real-world and simulation testing to reduce real-world data requirements for validation</li>
+          </ul>
+        </div>
+      </div>
+</section>
+
+<section id="method" class="section">
+    <div class="container is-max-desktop">
+  
+        <h2 class="title is-3 has-text-centered">Method</h2>
+    
+        <!-- -------------------------------------------------- -->
+        <!-- 1.   Method    -->
+        <!-- -------------------------------------------------- -->
+        <div class="columns is-vcentered">
+          <div class="column content">
+            <p><strong>Idea:</strong> Use simulation as a control variate!</p>
+            <ul>
+                <li>With a control variate – a correlated signal whose expectation is known – we can reduce the variance of our estimator</li>
+                <li>Simulation measurements are correlated with real-world measurements</li>
+                <li>Because the true simulation mean is unknown, we estimate it from the sim-only data</li>
+            </ul>
+          </div>
+          <div class="column is-3">
+            <figure class="image">
+                <img src="https://github.com/user-attachments/assets/3fc8b2f0-9142-4719-8d36-67be16f60d18" alt="paired_thumbnail" style="max-width: 200px" />
+            </figure>
+          </div>
+        </div>
+
+        <div class="columns is-vcentered">
+            <div class="column">
+                <figure class="image">
+                    <img src="https://github.com/user-attachments/assets/8cc2c4d3-31fe-430c-aaf0-0b3d6ef64217" alt="real_to_sim_mapping" />
+                </figure>
+            </div>
+        </div>
+
+        <div class="columns is-vcentered">
+            <div class="column content">
+              <p>Sim2Val estimates the true metrics mean by combining the paired real-world and simulation measurements.</p>
+              <ul>
+                <li>Note that variance reduction is a function of the scale of sim-only data (k) and the correlation (ρ<sup>2</sup>) between real-world and simulation measurements.</li>
+              </ul>
+            </div>
+            <div class="column is-5">
+              <figure class="image">
+                <img src="figures/equation.png" alt="Sim2Val Estimator" />
+              </figure>
+            </div>
+        </div>
+        <hr>
+
+        <div class="columns is-vcentered">
+          <div class="column content">
+            <p>If the original paired observations have low correlation:
+            <ul>
+              <li>We can learn a nonlinear metric correlator function (MCF) mapping scenario features + sim measurements → a refined surrogate metric</li>
+              <li>We can then use the new surrogate as a control variate:</li>
+            </ul>
+            </p>
+          </div>
+          <div class="column is-5">
+            <figure class="image">
+              <img src="figures/mcf.png" alt="MCF example" />
+            </figure>
+          </div>
+      </div>
+</section>
+
+<section id="results is-light" class="section">
+<div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Examples of Paired Scenarios</h2>
+    <div class="columns is-vcentered">
+        <div class="column content">
+            <p>
+                A real-world test (top) is reconstructed in simulation (bottom) to obtain a paired measurement.
+            </p>
+        </div>
+    </div>
+    <div class="columns is-vcentered">
+        <div class="column is-half">
+            <figure class="image">
+                <img src="https://github.com/user-attachments/assets/a9fde77f-1e37-499b-b86a-011601d9ab4b" alt="example1" />
+            </figure>
+        </div>
+        <div class="column is-half">
+            <figure class="image">
+                <img src="https://github.com/user-attachments/assets/20ee58be-7026-42d3-a38f-18a88849d017" alt="example2" />
+            </figure>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="results" class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <div class="columns is-vcentered">
+        <div class="column content">
+            <h4 class="is-3 has-text-centered">Sim2Val Autonomous Driving Performance</h4>
+            <figure class="image">
+                <img src="https://github.com/user-attachments/assets/0d23df4a-b69f-4a2f-9bc7-6c87865f723f" alt="autonomous_driving" />
+            </figure>
+            <p>By leveraging inexpensive sim samples, we can achieve equivalent confidence level as using ~6x the number of expensive real-world samples! (Variance reduction of 82.9%)</p>
+            <br>
+            <h4 class="is-3 has-text-centered">Sim2Val Quadruped Velocity Tracking</h4>
+            <figure class="image">
+                <img src="https://github.com/user-attachments/assets/12ef0ac4-3456-4560-a503-ce5e73ef11e4" alt="quadruped_velocity" />
+            </figure>
+            <p>Note that even the relatively modest reduction in variance from 2.048E−5 to 1.926E−5 would have required 38% more real-world tests without sim!</p>
+        </div>
+    </div>
+</div>
+</section>
+  
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+@inproceedings{luo2025_sim2val,
+    title = {Sim2Val: Leveraging Correlation Across Test Platforms for Variance-Reduced Metric Estimation},
+    author = {Rachel Luo and Heng Yang and Michael Watson and Apoorva Sharma and Sushant Veer and Edward Schmerling and Marco Pavone},
+    booktitle = {Proceedings of the Conference on Robot Learning (CoRL)},
+    year = {2025},
+}
+      </code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+  </html>
